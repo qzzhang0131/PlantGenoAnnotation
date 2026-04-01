@@ -1,9 +1,7 @@
 # PlantGenoANN: Plant Genome Annotation Pipeline
 
 ## 📖 Introduction
-PlantGenoANN is an automated, deep-learning-based pipeline for plant genome annotation. Fine-tuned from our foundation model PlantBiMoE (released in Dec 2025), this tool leverages a powerful language model (via Caduceus architecture) to directly process raw genome sequences and accurately predict gene structures, including CDS and introns.
-
-With PlantGenoANN, you can perform end-to-end genome annotation with a single command: going directly from a raw FASTA/FNA sequence file to a standard GFF3 annotation file.
+PlantGenoANN is a plant genomic segmentation model leveraging the PlantBiMoE model to predict the location of several types of plant genomic elements at single-nucleotide resolution.This tool leverages a language model to process raw genome sequences and predict gene structures.With PlantGenoANN, you can going directly from a raw FASTA/FNA sequence file to a GFF3 annotation file.
 
 ## 📁 Repository Structure
 * `run_annotator.py`: The main entry point for the pipeline. It handles sequence extraction, tokenization, model inference dispatch, and GFF generation.
