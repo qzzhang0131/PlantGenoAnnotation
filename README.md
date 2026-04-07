@@ -1,20 +1,25 @@
 # PlantGenoANN: Plant Genome Annotation Pipeline
 
+[![Hugging Face Model](https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Models-yellow)](https://huggingface.co/qzzhang/PlantGenoANN)
+[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
+
 ## 📖 Introduction
-PlantGenoANN is a plant genomic segmentation model that enables the prediction of various plant genomic elements at single-nucleotide resolution. The model is built upon the PlantBiMoE architecture with a 1D U-Net segmentation head, specifically designed for automated plant genome annotation. It predicts gene structures—including genes, CDSs, and exons—on both the forward and reverse strands. In addition, the model can serve as a foundation model, adaptable through fine-tuning to predict omic signal tracks such as plant RNA-seq and ATAC-seq.
+**PlantGenoANN** is a high-performance plant genomic segmentation model designed for predicting genomic elements at single-nucleotide resolution. Built upon the **PlantBiMoE** architecture with a 1D U-Net segmentation head, it automates the annotation of gene structures—including genes, CDSs, and exons—on both forward and reverse strands. 
+
+Beyond standard annotation, PlantGenoANN serves as a **foundation model**, adaptable via fine-tuning to predict diverse omic signal tracks such as RNA-seq and ATAC-seq.
+
+## 🤗 Model Access
+The pre-trained and fine-tuned weights for PlantGenoANN are hosted on Hugging Face:
+* **Model Hub:** [qzzhang/PlantGenoANN](https://huggingface.co/qzzhang/PlantGenoANN)
+
+---
 
 ## 📁 Repository Structure
-* `run_annotator.py`: The main entry point for the pipeline. It handles sequence extraction, tokenization, model inference dispatch, and GFF generation.
-* `annotator.py`: The core model inference script, utilizing `accelerate` for efficient, multi-GPU processing (bf16 precision).
-* `src/`: Core functional modules:
-  * `sequence_extractor.py` & `sequence_tokenizer.py`: Handles sliding-window sequence chunking and tokenization.
-  * `caduceus_wrapper.py`: Wraps the loaded model for distributed inference.
-  * `gff_writer.py`: Formats model predictions into standard GFF3 output.
-  * `configuration.py`: Manages pipeline hyperparameters.
+* `run_annotator.py`: Main entry point (extraction, tokenization, inference dispatch).
+* `annotator.py`: Core inference script utilizing `accelerate` (bf16 precision).
+* `src/`: Functional modules for sequence processing, model wrapping, and GFF generation.
 
 ## ⚙️ Installation & Environment
-We recommend creating a fresh Conda environment for PlantGenoANN (Python 3.8+).
-
 ```bash
 # 1. Create and activate conda environment
 conda create -n plantgenoann python=3.8
