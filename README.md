@@ -41,7 +41,7 @@ To run the full annotation pipeline, use the `run_annotator.py` script. The pipe
 ```bash
 python run_annotator.py \
     -i path/to/your/genome.fasta \
-    -m path/to/your/finetuned_model_directory \
+    -m path/to/your/pretrained_model_directory \
     -o output_annotation.gff
 ```
 
