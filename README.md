@@ -16,7 +16,7 @@ The pre-trained weights for PlantGenoANN are hosted on Hugging Face:
 
 ## 📁 Repository Structure
 * `run_annotator.py`: Main entry point (extraction, tokenization, inference dispatch).
-* `annotator.py`: Core inference script utilizing `accelerate` (bf16 precision).
+* `annotator.py`: Core inference script utilizing `accelerate` library (bf16 precision).
 * `src/`: Functional modules for sequence processing, model wrapping, and GFF generation.
 
 ## ⚙️ Installation & Environment
