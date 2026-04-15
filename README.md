@@ -9,7 +9,7 @@
 Built upon the **[PlantBiMoE](https://github.com/HUST-Keep-Lin/PlantBiMoE)** architecture with a 1D U-Net segmentation head, it automates the annotation of gene structures—including genes, CDSs, and exons—on both forward and reverse strands. Beyond standard annotation, PlantGenoAnn serves as a **long-context plant genomic foundation model** (up to 49,152 bp), adaptable via fine-tuning to predict diverse omic signal tracks such as RNA-seq and ATAC-seq.
 
 ## 🤗 Model Access
-The pre-trained weights for PlantGenoAnn-model-plants and PlantGenoAnn-model-plants are hosted on Hugging Face:
+The pre-trained weights for **PlantGenoAnn-model-plants** and **PlantGenoAnn-model-plants** are hosted on Hugging Face:
 * **PlantGenoAnn-model-plants** [qzzhang/PlantGenoAnn-model-plants](https://huggingface.co/qzzhang/PlantGenoAnn-model-plants)
 * **PlantGenoAnn-multi-species** [qzzhang/PlantGenoAnn-multi-species](https://huggingface.co/qzzhang/PlantGenoAnn-multi-species)
 
