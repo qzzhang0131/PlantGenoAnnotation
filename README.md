@@ -4,13 +4,13 @@
 [![License](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 
 ## 📖 Introduction
-**PlantGenoAnn** is a plant genomic segmentation model designed for predicting genomic elements at single-nucleotide resolution. It is available in two variants: **PlantGenoAnn-model-plants** (trained on 9 model plants) and **PlantGenoAnn-multi-species** (trained on 42 plant species). We strongly recommend using PlantGenoAnn-model-plants for genomic predictions.
+**PlantGenoAnn** is a plant genomic segmentation model designed for predicting genomic elements at single-nucleotide resolution. It is available in two variants: **PlantGenoAnn-model-plants** (trained on 9 model plants) and **PlantGenoAnn-multi-species** (trained on 42 plant species). We recommend using PlantGenoAnn-model-plants for genomic predictions.
 
 Built upon the **[PlantBiMoE](https://github.com/HUST-Keep-Lin/PlantBiMoE)** architecture with a 1D U-Net segmentation head, it automates the annotation of gene structures—including genes, CDSs, and exons—on both forward and reverse strands. Beyond standard annotation, PlantGenoAnn serves as a **long-context plant genomic foundation model** (up to 49,152 bp), adaptable via fine-tuning to predict diverse omic signal tracks such as RNA-seq and ATAC-seq.
 
 ## 🤗 Model Access
 The pre-trained weights for **PlantGenoAnn-model-plants** and **PlantGenoAnn-multi-species** are hosted on Hugging Face:
-* **model-plants:** [qzzhang/PlantGenoAnn-model-plants](https://huggingface.co/qzzhang/PlantGenoAnn-model-plants) (Recommand)
+* **model-plants:** [qzzhang/PlantGenoAnn-model-plants](https://huggingface.co/qzzhang/PlantGenoAnn-model-plants) (recommanded)
 * **multi-species:** [qzzhang/PlantGenoAnn-multi-species](https://huggingface.co/qzzhang/PlantGenoAnn-multi-species)
 
 ---
