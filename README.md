@@ -72,7 +72,7 @@ with torch.no_grad():
 logits = outs.logits
 
 # Get probabilities associated with CDS on the forward strand (+)
-pos_strand_cds_probs = model.get_feature_logits("CDS", "+", logits).detach()
+pos_strand_cds_probs = model.get_feature_logits(feature="CDS", strand="+", logtis=logits).detach()
 print(f"CDS probabilities on the forward strand: {pos_strand_cds_probs}")
 
 # Get the sequence embeddings
