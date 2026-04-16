@@ -101,7 +101,7 @@ python run_annotator.py \
     -o ./example \
     -f bigwig
 ```
-**Write Prediction Tracks to a Standard GFF3 File:**
+**Write Prediction Tracks to a Standard GFF3 File (Beta):**
 ```bash
 python run_annotator.py \
     -i ./example/Arabidopsis_lyrata.v.1.0.dna.chromosome.8.fa \
