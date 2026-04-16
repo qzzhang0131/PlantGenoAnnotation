@@ -33,7 +33,7 @@ cd PlantGenoAnn
 # 3. Install dependencies
 pip install -r requirements.txt
 ```
-The model requires the `mamba-ssm` and `causal-conv1d` libraries for the core backbone.
+The model requires the [mamba-ssm](https://github.com/state-spaces/mamba) and [causal-conv1d] libraries for the core backbone.
 
 ## 🚀 Quick Start (Usage)
 
