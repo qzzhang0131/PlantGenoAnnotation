@@ -6,43 +6,45 @@ from datasets import config
 from src.configuration import PipelineConfig
 from src.sequence_extractor import SequenceExtractor
 from src.sequence_tokenizer import SequenceTokenizer
-from src.gff_writer import GFFwriter
+from src.bigwig_gff_writer import BigWigwriter, GFFwriter
 
 os.environ["TOKENIZERS_PARALLELISM"] = "false"
 
 def main():
     parser = argparse.ArgumentParser(description="PlantGenoANN annotation pipeline")
     parser.add_argument("-i","--genome_file", required=True, help="The genome FA/FNA file to be predicted.")
+    parser.add_argument("-s","--species", required=True, help="The species name to be predicted.")
     parser.add_argument("-m","--model_path", required=True,
                         help="Specify the path to the prediction model.")
-    parser.add_argument("-o","--output_file", required=True, help="Output GFF file")
-    parser.add_argument("--chunk_size", type=int, default=4800, 
-                        help="The size of the chunks processed by annotator model.")
+    parser.add_argument("-o","--output_file", required=True, help="Output file name.")
+    parser.add_argument("-f","--output_format", required=True, default="bigwig", help="Choose to write predictions to bigwig files or a standard gff file (default:bigwig).")
+    parser.add_argument("--chunk_size", type=int, default=3200, 
+                        help="The size of the chunks processed by annotator model (default:3,200).")
     parser.add_argument("--batch_size", type=int, default=8, 
-                        help="The number of samples in a batch.")
+                        help="Batch size depending on GPU memory (default:8).")
     parser.add_argument("--num_tokenize_threads", type=int, default=16, 
-                        help="Number of CPU cores used to tokenize the sequence.")
+                        help="Number of CPU cores used to tokenize the sequence (default:16).")
     parser.add_argument("--num_workers", type=int, default=8, 
-                        help="The number of CPU cores to load data in parallel")
+                        help="The number of CPU cores to load data in parallel (default:8).")
     parser.add_argument("--cache_path", type=str, default="auto",
-                        help='Specify the path to cache.')
+                        help='Specify the path to cache (default:auto).')
     parser.add_argument("--sliding_window_size", type=int, default=49152, 
-                        help="The length of the sliding window used to segment the chromosome.")
+                        help="The length of the sliding window used to segment the chromosome (default:49,152).")
     parser.add_argument("--overlap_window_size", type=int, default=6144, 
-                        help="The overlap length between two consecutive sliding windows.")
+                        help="The overlap length between two consecutive sliding windows (default:6,144).")
     parser.add_argument("--min_chromosome_size", type=int, default=1000000, 
-                        help="Minimum chromosome size for annotating. The size below this value will not be annotate in given FA/FNA files.")
+                        help="Minimum chromosome size (bp) for annotating. The size below this value will not be annotate in given FA/FNA/FASTA files (default:1,000,000).")
     parser.add_argument("--threshold", type=float, default=0.50,
-                        help="The minimum threshold of probability when judging whether a nucleotide is valid.")
+                        help="Gff output format only: The minimum threshold of probability when judging whether a nucleotide is valid (default:0.5).")
     parser.add_argument("--min_gene_length", type=int, default=60,
-                        help="The shortest gene length. Gene lengths below this value will be filtered out.")
+                        help="Gff output format only: The shortest gene length. Gene lengths below this value will be filtered out (default:60).")
     parser.add_argument("--min_intron_length", type=int, default=9,
-                        help="The shortest intron length. Intron lengths below this value will be filtered out.")
+                        help="Gff output format only: The shortest intron length. Intron lengths below this value will be filtered out (default:9).")
     parser.add_argument("--min_cds_length", type=int, default=9,
-                        help="The shortest CDS length. CDS lengths below this value will be filtered out.")
-    parser.add_argument("--min_gene_conf_score", type=float, default=0.50, help="The lowest gene confidence score.")
-    parser.add_argument("--min_intron_conf_score", type=float, default=0.50, help="The lowest intron confidence score.")
-    parser.add_argument("--min_cds_conf_score", type=float, default=0.50, help="The lowest CDS confidence score.")
+                        help="Gff output format only: The shortest CDS length. CDS lengths below this value will be filtered out (default:9).")
+    parser.add_argument("--min_gene_conf_score", type=float, default=0.50, help="Gff output format only: The lowest gene confidence score (default:0.5).")
+    parser.add_argument("--min_intron_conf_score", type=float, default=0.50, help="Gff output format only: The lowest intron confidence score (default:0.5).")
+    parser.add_argument("--min_cds_conf_score", type=float, default=0.50, help="Gff output format only: The lowest CDS confidence score (default:0.5).")
     args = parser.parse_args()
     
     BASE_DIR = os.path.dirname(os.path.abspath(__file__))
@@ -59,7 +61,9 @@ def main():
     
     annotator_config = PipelineConfig(
         input_fasta = args.genome_file,
+        species = args.species,
         output_file = args.output_file,
+        output_format = args.output_format,
         model_path = args.model_path,
         cache_path = cache_path,
         sequence_length = args.sliding_window_size,
@@ -80,7 +84,7 @@ def main():
 
     """Execute the complete genome annotation pipeline"""
     print("=" * 60)
-    print("Starting PlantGenoANN Annotation")
+    print("Starting PlantGenoAnn Prediction Pipeline....")
     print("=" * 60)
     try:
         # Step 1: Sequence Extraction
@@ -111,8 +115,12 @@ def main():
         print(f"Model inference completed.")
         
         # print("\n4. Writing predictions to a GFF3 file...")
-        gff_writer = GFFwriter(annotator_config)
-        gff_writer.process(chrom_sequence_info)
+        if args.output_format == "gff":
+            gff_writer = GFFwriter(annotator_config)
+            gff_writer.process(chrom_sequence_info)
+        else:
+            bigwig_writer = BigWigwriter(annotator_config)
+            bigwig_writer.process(chrom_sequence_info)
 
         # Step 4: Cleanup intermediate files
         try:
@@ -122,11 +130,11 @@ def main():
             print(f"Warning: Could not clean {cache_path}: {e}")
 
         print("=" * 60)
-        print("Annotation Completed Successfully!")
+        print("Pipeline Completed Successfully!")
         print("=" * 60)
 
     except Exception as e:
-        print(f"\nAnnotation failed with error: {e}")
+        print(f"Pipeline failed with error: {e}")
         raise
     
     return
