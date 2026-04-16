@@ -115,6 +115,7 @@ python run_annotator.py \
 PlantGenoANN is highly customizable. You can adjust sliding windows, confidence thresholds, and hardware utilization to fit your specific needs:
 
 **Hardware & Processing:**
+* `--chunk_size`: The size of the chunks processed by annotator model (default:3,200).
 * `--batch_size`: The number of samples in a batch (default: 8).
 * `--num_workers`: The number of CPU cores to load data in parallel (default: 8).
 * `--num_tokenize_threads`: Number of CPU cores used to tokenize the sequence (default: 16).
