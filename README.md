@@ -37,7 +37,7 @@ pip install -r requirements.txt
 
 ## 🚀 Quick Start (Usage)
 
-You can use PlantGenoAnn in two ways: by directly interacting with the model in Python for sequence analysis, or by running the complete pipeline script to generate standard annotation files.
+You can use PlantGenoAnn in two ways: directly using the [transformers](https://github.com/huggingface/transformers) library for model inference and obtaining embeddings, or running the complete pipeline script to generate prediction tracks or standard GFF annotation files.
 
 ### 1. Direct Model Inference (Python)
 You can retrieve both genomic feature probabilities and sequence embeddings using the following snippet:
