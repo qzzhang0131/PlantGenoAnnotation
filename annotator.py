@@ -35,7 +35,7 @@ class GenomeAnnotator:
             for batch in tqdm(dataloader, desc="Model Inference", leave=False, disable=not self.accelerator.is_local_main_process):
                 input_ids = batch["input_ids"]
                 outputs = model(input_ids=input_ids)
-                logits = torch.sigmoid(outputs.logits)
+                logits = torch.transpose(outputs.logits, 1, 2)
                 
                 # Gather predictions from all processes and select specific channels
                 gathered_logits = self.accelerator.gather(logits)
