@@ -96,7 +96,7 @@ To run the full prediction pipeline, use the `run_annotator.py` script. The pipe
 ```bash
 python run_annotator.py \
     -i ./example/Arabidopsis_lyrata.v.1.0.dna.chromosome.8.fa \
-    -s Arabidopsis_lyrata
+    -s Arabidopsis_lyrata \
     -m ./PlantGenoAnn-model-plants \
     -o ./example \
     -f bigwig
@@ -105,14 +105,14 @@ python run_annotator.py \
 ```bash
 python run_annotator.py \
     -i ./example/Arabidopsis_lyrata.v.1.0.dna.chromosome.8.fa \
-    -s Arabidopsis_lyrata
+    -s Arabidopsis_lyrata \
     -m ./PlantGenoAnn-model-plants \
     -o ./example \
     -f gff
 ```
 
 ## 🛠️ Advanced Configuration (Optional)
-PlantGenoANN is highly customizable. You can adjust sliding windows, confidence thresholds, and hardware utilization to fit your specific needs:
+PlantGenoAnn is highly customizable. You can adjust sliding windows, confidence thresholds, and hardware utilization to fit your specific needs:
 
 **Hardware & Processing:**
 * `--chunk_size`: The size of the chunks processed by annotator model (default: 3,200).
