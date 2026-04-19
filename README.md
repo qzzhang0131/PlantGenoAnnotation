@@ -33,6 +33,12 @@ cd PlantGenoAnn
 
 # 3. Install dependencies
 pip install -r requirements.txt
+
+# 4. Compile and install core CUDA libraries
+pip install ninja packaging
+MAX_JOBS=4 pip install causal-conv1d==1.2.0.post2 --no-build-isolation
+MAX_JOBS=4 pip install mamba-ssm==1.2.0.post1 --no-build-isolation
+MAX_JOBS=4 pip install flash-attn==2.5.6 --no-build-isolation
 ```
 
 ## 🚀 Quick Start (Usage)
