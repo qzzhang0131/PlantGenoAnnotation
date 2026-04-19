@@ -1,3 +1,7 @@
+--extra-index-url https://download.pytorch.org/whl/cu121
+torch==2.2.2
+torchvision==0.17.2
+torchaudio==2.2.2
 biopython==1.81
 datasets==2.15.0
 einops==0.7.0
@@ -26,6 +30,3 @@ transformers==4.38.1
 accelerate==0.32.1
 triton==2.2.0
 wandb==0.13.5
-flash-attn==2.5.6
-causal-conv1d==1.2.0.post2
-mamba-ssm==1.2.0.post1
