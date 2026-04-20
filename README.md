@@ -92,7 +92,7 @@ print(f"Sequence embeddings shape is: {hidden_states.shape}")
 ### 2. Full Prediction Pipeline
 To run the full prediction pipeline, use the `run_annotator.py` script. The pipeline will automatically handle sliding windows, multi-GPU model inference, and standard output format.
 
-**Basic Configuration:**
+**🛠️ Basic Configuration:**
 * `-i`: The genome FA/FNA file to be predicted.
 * `-s`: The species name to be predicted.
 * `-m`: Specify the path to the prediction model (downloaded weights from HuggingFace above).
