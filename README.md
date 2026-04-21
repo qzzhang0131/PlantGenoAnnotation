@@ -8,7 +8,6 @@
 
 Built upon the **[PlantBiMoE](https://github.com/HUST-Keep-Lin/PlantBiMoE)** architecture with a 1D U-Net segmentation head, it automates the prediction of gene structures—including genes, CDSs, and exons—on both forward and reverse strands. Beyond standard annotation, PlantGenoAnn serves as a **long-context plant genomic foundation model** (up to 49,152 bp), adaptable via fine-tuning to predict diverse omic signal tracks such as RNA-seq and ATAC-seq.
 
----
 
 ## 🤗 Model Access
 The pre-trained weights for **PlantGenoAnn-model-plants** and **PlantGenoAnn-multi-species** are hosted on Hugging Face:
@@ -40,6 +39,7 @@ pip install -r requirements.txt
 export CUDA_HOME=$CONDA_PREFIX PATH=$CONDA_PREFIX/bin:$PATH
 MAX_JOBS=4 pip install causal-conv1d==1.2.0.post2 mamba-ssm==1.2.0.post1 flash-attn==2.5.6 --no-build-isolation
 ```
+---
 
 ## 🚀 Quick Start (Usage)
 
