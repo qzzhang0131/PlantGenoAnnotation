@@ -27,7 +27,8 @@ The pre-trained weights for **PlantGenoAnn-model-plants** and **PlantGenoAnn-mul
 The model requires the [mamba-ssm](https://github.com/state-spaces/mamba) and [causal-conv1d](https://github.com/Dao-AILab/causal-conv1d) libraries for the core backbone.
 ```
 # 1. Clone repository & create environment
-git clone https://github.com/qzzhang0131/PlantGenoAnn.git && cd PlantGenoAnn
+git clone https://github.com/qzzhang0131/PlantGenoAnn.git
+cd PlantGenoAnn
 conda create -n plantgenoann python=3.8 -y
 conda activate plantgenoann
 
