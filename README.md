@@ -142,6 +142,9 @@ PlantGenoAnn prediction pipeline is highly customizable. You can adjust sliding 
 * `--min_gene_length`, `--min_intron_length`, `--min_cds_length`: Filter out predicted elements shorter than these values.
 
 *For a full list of parameters, simply run `python run_annotator.py --help`.*
+
+---
+
 ## 📜 License
 See the LICENSE file for details.
 ## 📧 Contact
