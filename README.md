@@ -16,8 +16,6 @@ The pre-trained weights for **PlantGenoAnn-model-plants** and **PlantGenoAnn-mul
 | model-plants |https://huggingface.co/qzzhang/PlantGenoAnn-model-plants| 9 | 18B |
 | multi-species | https://huggingface.co/qzzhang/PlantGenoAnn-multi-species| 42 | 72B |
 
----
-
 ## 📁 Repository Structure
 * `run_annotator.py`: Main entry point (extraction, tokenization, inference dispatch).
 * `annotator.py`: Core inference script utilizing [accelerate](https://github.com/huggingface/accelerate) library (bf16 precision).
@@ -143,7 +141,33 @@ PlantGenoAnn prediction pipeline is highly customizable. You can adjust sliding 
 
 *For a full list of parameters, simply run `python run_annotator.py --help`.*
 
----
+## ⚡ Hardware Requirements
+
+PlantGenoAnn inference **requires NVIDIA GPUs with Ampere architecture or newer** (e.g., RTX 30-series, RTX 40-series, A100, H100, etc.).  
+Older architectures such as Turing (RTX 20-series) or earlier **are not supported** due to required CUDA extensions.
+
+### Inference Time for Different Plant Genomes
+
+The following table shows approximate **single-GPU inference time (hours)** for typical plant genomes:
+
+| Species       | Genome Size | RTX 3090 | RTX 4080 | RTX 4090 |
+|---------------|-------------|----------|----------|----------|
+| Arabidopsis   | 116MB       | 0.29     | 0.23     | 0.16     |
+| Rice          | 364MB       | 0.90     | 0.75     | 0.50     |
+| Soybean       | 949MB       | 2.32     | 1.90     | 1.31     |
+| Maize         | 2.07GB      | 5.19     | 4.31     | 2.95     |
+
+> **Note**: Actual runtime may vary depending on GPU driver version, system load, and exact hardware configuration. These values are for reference only.
+
+### Recommended Batch Size by GPU Memory
+
+Under default configuration, we recommend the following `batch_size` settings based on GPU VRAM:
+
+| GPU Memory | 10GB | 16GB | 24GB | 40GB |
+|------------|------|------|------|------|
+| batch size | 2    | 4    | 8    | 16   |
+
+It is strongly recommended to follow this table when setting the `--batch_size` parameter to ensure optimal performance and stability.
 
 ## 📜 License
 See the LICENSE file for details.
