@@ -149,12 +149,12 @@ PlantGenoAnn inference **requires NVIDIA GPUs with Ampere architecture or newer*
 
 The following table shows approximate **single-GPU inference time (hours)** for typical plant genomes:
 
-| Plant Species | Genome Size | RTX 3090 | RTX 4080 | RTX 4090 |
-|---------------|-------------|----------|----------|----------|
-| Arabidopsis   | 116MB       | 0.29     | 0.23     | 0.16     |
-| Rice          | 364MB       | 0.90     | 0.75     | 0.50     |
-| Soybean       | 949MB       | 2.32     | 1.90     | 1.31     |
-| Maize         | 2.07GB      | 5.19     | 4.31     | 2.95     |
+| Plant Species | Genome Size | RTX 3080Ti | RTX 3090 | RTX 4080 | RTX 4090 |
+|---------------|-------------|----------|----------|----------|----------|
+| Arabidopsis   | 116MB       | 0.33     | 0.29     | 0.23     | 0.16     |
+| Rice          | 364MB       | 1.01     | 0.90     | 0.75     | 0.50     |
+| Soybean       | 949MB       | 2.60     | 2.32     | 1.90     | 1.31     |
+| Maize         | 2.07GB      | /        | 5.19     | 4.31     | 2.95     |
 
 > **Note**: Actual runtime may vary depending on GPU driver version, system load, and exact hardware configuration. These values are for reference only.
 
