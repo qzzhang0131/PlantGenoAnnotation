@@ -162,7 +162,7 @@ The following table shows approximate **single-GPU inference time (hours)** for 
 
 Under default configuration, we recommend the following `batch_size` settings based on GPU VRAM:
 
-| GPU Memory | 10GB | 16GB | 24GB | 40GB |
+| GPU Memory | 8GB | 16GB | 24GB | 40GB |
 |------------|------|------|------|------|
 | batch size | 2    | 4    | 8    | 16   |
 
