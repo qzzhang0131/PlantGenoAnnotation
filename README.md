@@ -158,6 +158,8 @@ The following table shows approximate **single-GPU inference time (hours)** for 
 
 > **Note**: Actual runtime may vary depending on GPU driver version, system load, and exact hardware configuration. These values are for reference only.
 
+**Multi-GPU Support**: PlantGenoAnn supports multi-GPU parallel inference through [accelerate](https://github.com/huggingface/accelerate). With **N GPUs**, the inference time is approximately **1/N** of the single-GPU reference time (near-linear scaling).
+
 ### Recommended Batch Size by GPU Memory
 
 Under default configuration, we recommend the following `batch_size` settings based on GPU VRAM:
