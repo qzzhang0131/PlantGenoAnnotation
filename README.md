@@ -154,7 +154,7 @@ The following table shows approximate **single-GPU inference time (hours)** for 
 | Arabidopsis   | 116MB       | 0.33     | 0.29     | 0.23     | 0.16     |
 | Rice          | 364MB       | 1.01     | 0.90     | 0.75     | 0.50     |
 | Soybean       | 949MB       | 2.60     | 2.32     | 1.90     | 1.31     |
-| Maize         | 2.07GB      | /        | 5.19     | 4.31     | 2.95     |
+| Maize         | 2.07GB      | 5.85     | 5.19     | 4.31     | 2.95     |
 
 > **Note**: Actual runtime may vary depending on GPU driver version, system load, and exact hardware configuration. These values are for reference only.
 
