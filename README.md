@@ -145,7 +145,7 @@ PlantGenoAnn prediction pipeline is highly customizable. You can adjust sliding 
 
 PlantGenoAnn inference **requires NVIDIA GPUs with Ampere architecture or newer** (e.g., RTX 30-series, RTX 40-series, A100, H100, etc.).  
 
-### Inference Time for Different Plant Genomes
+### 1. Inference Time for Different Plant Genomes
 
 The following table shows approximate **single-GPU inference time (hours)** for typical plant genomes:
 
@@ -160,7 +160,7 @@ The following table shows approximate **single-GPU inference time (hours)** for 
 
 **Multi-GPU Support:** PlantGenoAnn supports multi-GPU parallel inference through [accelerate](https://github.com/huggingface/accelerate). With N GPUs, the inference time is approximately 1/N of the single-GPU reference time (near-linear scaling).
 
-### Recommended Batch Size by GPU Memory
+### 2. Recommended Batch Size by GPU Memory
 
 Under default configuration, we recommend the following `batch_size` settings based on GPU VRAM:
 
